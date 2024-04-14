@@ -5,19 +5,8 @@
  * @return {number}
  */
 var reduce = function(nums, fn, init) {
-    function reducer(prev, curr) {
-        return fn(prev, curr);
+for(let i =0; i<nums.length; i++){
+        init = fn(init, nums[i]);
     }
-
-    if (nums.length === 0) {
-        return init;
-    }
-    
-    var result = init;
-    
-    for (var i = 0; i < nums.length; i++) {
-        result = reducer(result, nums[i]);
-    }
-    
-    return result;
+    return init;
 };
