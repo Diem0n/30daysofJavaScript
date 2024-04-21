@@ -5,21 +5,10 @@
  * @return {Function}
  */
 var cancellable = function(fn, args, t) {
-    let timeoutId;
+   var timeout = setTimeout(()=>fn(...args),t);
 
-  const cancelFn = () => {
-    clearTimeout(timeoutId);
-  };
-
-  const delayedExecution = () => {
-    timeoutId = setTimeout(() => {
-      fn(...args);
-    }, t);
-  };
-
-  delayedExecution();
-
-  return cancelFn;
+    var cancelFn = ()=> clearTimeout(timeout);
+    return cancelFn;
 };
 
 /**
